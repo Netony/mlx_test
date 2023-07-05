@@ -6,7 +6,7 @@
 #    By: dajeon <dajeon@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/16 09:00:32 by dajeon            #+#    #+#              #
-#    Updated: 2023/07/05 17:33:40 by dajeon           ###   ########.fr        #
+#    Updated: 2023/07/05 17:44:19 by dajeon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,7 @@ CC = gcc
 AR = ar
 RM = rm
 
-CFLAGS = #-Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 # LIBFLAGS = -lm -L. -lmlx -framework OpenGl -framework AppKit -l$(LIB) -L$(LIB_DIR)
 LIBFLAGS = -lm -lmlx -framework OpenGl -framework AppKit -l$(LIB) -L$(LIB_DIR)
 
@@ -70,11 +70,13 @@ bonus :
 	$(MAKE) $(NAME) WITH_BONUS=1
 
 clean :
-	$(RM) $(RMFLAGS) objs */*.a */*.o */*/*.o
+	$(RM) $(RMFLAGS) objs
+	$(MAKE) -C libft clean
 
 fclean : 
-	$(MAKE) clean
+	$(RM) $(RMFLAGS) objs
 	$(RM) $(RMFLAGS) $(NAME)
+	$(MAKE) -C libft fclean
 
 re : 
 	$(MAKE) fclean
