@@ -6,14 +6,15 @@
 #    By: dajeon <dajeon@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/16 09:00:32 by dajeon            #+#    #+#              #
-#    Updated: 2023/07/05 17:44:19 by dajeon           ###   ########.fr        #
+#    Updated: 2023/07/08 21:37:11 by dajeon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf
 
 SOURCES =
-SOURCES_MANDA = main.c
+SOURCES_MANDA = fdf_parse_again.c fdf_parse_test.c fdf_parse_made.c \
+				ft_toklen.c ft_atoi_new.c ft_atoi_base.c dot.c map.c
 SOURCES_BONUS =
 			   
 INCLUDES = fdf.h
