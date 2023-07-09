@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dot.c                                              :+:      :+:    :+:   */
+/*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dajeon <dajeon@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/08 21:01:37 by dajeon            #+#    #+#             */
-/*   Updated: 2023/07/10 07:53:15 by dajeon           ###   ########.fr       */
+/*   Created: 2023/07/10 07:49:39 by dajeon            #+#    #+#             */
+/*   Updated: 2023/07/10 07:52:31 by dajeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-t_dot	*ft_dotnew(int x, int y, int z, int color)
+int	ft_maprow(t_dot ***map)
 {
-	t_dot	*new;
+	int	row;
 
-	new = (t_dot *)malloc(sizeof(t_dot));
-	if (new == NULL)
-		return (NULL);
-	new->x = x;
-	new->y = y;
-	new->z = z;
-	if (color == 0)
-		new->color = 0x00FFFFFF;
-	else
-		new->color = color;
-	return (new);
+	row = 0;
+	while (map[row])
+		row++;
+	return (row);
+}
+
+int	ft_mapcol(t_dot	***map)
+{
+	int	col;
+
+	col = 0;
+	while (map[0][col])
+		col++;
+	return (col);
 }

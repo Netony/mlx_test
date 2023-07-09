@@ -6,12 +6,11 @@
 /*   By: dajeon <dajeon@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 17:31:41 by dajeon            #+#    #+#             */
-/*   Updated: 2023/07/09 21:41:02 by dajeon           ###   ########.fr       */
+/*   Updated: 2023/07/10 08:00:47 by dajeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include <fcntl.h>
 
 int	main(void)
 {

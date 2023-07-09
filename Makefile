@@ -6,7 +6,7 @@
 #    By: dajeon <dajeon@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/16 09:00:32 by dajeon            #+#    #+#              #
-#    Updated: 2023/07/09 21:23:15 by dajeon           ###   ########.fr        #
+#    Updated: 2023/07/10 07:25:13 by dajeon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = fdf
 SOURCES =
 SOURCES_MANDA = main.c fdf_parse_test.c fdf_parse.c\
 				fdf_hook.c dot_action.c \
-				dot_print.c dot_error.c parse.c \
+				dot_parse.c dot_print.c dot_error.c parse.c \
 				ft_toklen.c ft_atoi_new.c ft_atoi_base.c dot.c \
 				fdf_image.c \
 				tab.c fdf_image_set.c
