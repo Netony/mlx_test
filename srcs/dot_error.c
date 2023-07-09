@@ -1,40 +1,54 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   dot_err.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dajeon <dajeon@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/05 17:31:41 by dajeon            #+#    #+#             */
-/*   Updated: 2023/07/09 21:41:02 by dajeon           ###   ########.fr       */
+/*   Created: 2023/07/09 19:21:23 by dajeon            #+#    #+#             */
+/*   Updated: 2023/07/09 19:21:37 by dajeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include <fcntl.h>
 
-int	main(void)
+void	ft_doterr_arr(t_dot **arr, int n)
 {
-	char	*path = "42.fdf";
-	t_vars	vars;
+	int	i;
 
-	vars.map = fdf_parse(path);
-	vars.width = 1280;
-	vars.height = 720;
-	vars.mlx = mlx_init();
-	if (vars.mlx == NULL)
-		printf("yes");
-	vars.win = mlx_new_window(vars.mlx, vars.width, vars.height, "Tutorial");
-	fdf_putmap(&vars, vars.map);
-	fdf_hook(&vars);
-	mlx_loop(vars.mlx);
-	return (0);
+	i = 0;
+	while (i < n)
+		free(arr[i++]);
+	free(arr);
 }
 
-
-
-/*
-int	test(void)
+void	ft_doterr_tab(t_dot ***tab, int n)
 {
+	int	i;
+
+	i = 0;
+	while (i < n)
+		ft_dotdel_arr(tab[i++]);
+	free(tab);
 }
-*/
+
+void	ft_dotdel_arr(t_dot **arr)
+{
+	int	i;
+
+	i = 0;
+	while (arr[i])
+		free(arr[i++]);
+	free(arr);
+}
+
+void	ft_dotdel_tab(t_dot ***tab)
+{
+	int	i;
+
+	i = 0;
+	while (tab[i])
+		ft_dotdel_arr(tab[i++]);
+	free(tab);
+}
+

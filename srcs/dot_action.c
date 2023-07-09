@@ -1,40 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   dot_action.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dajeon <dajeon@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/05 17:31:41 by dajeon            #+#    #+#             */
-/*   Updated: 2023/07/09 21:41:02 by dajeon           ###   ########.fr       */
+/*   Created: 2023/07/09 19:56:15 by dajeon            #+#    #+#             */
+/*   Updated: 2023/07/09 21:52:59 by dajeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include <fcntl.h>
 
-int	main(void)
+void	map_action(t_dot ***map, void (*f)(t_dot *, int, int), int x, int y)
 {
-	char	*path = "42.fdf";
-	t_vars	vars;
-
-	vars.map = fdf_parse(path);
-	vars.width = 1280;
-	vars.height = 720;
-	vars.mlx = mlx_init();
-	if (vars.mlx == NULL)
-		printf("yes");
-	vars.win = mlx_new_window(vars.mlx, vars.width, vars.height, "Tutorial");
-	fdf_putmap(&vars, vars.map);
-	fdf_hook(&vars);
-	mlx_loop(vars.mlx);
-	return (0);
+	int	i;
+	int	j;
+	
+	i = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			f(map[i][j], x, y);
+			j++;
+		}
+		i++;
+	}
 }
 
-
-
-/*
-int	test(void)
+void	fdf_move(t_dot *dot, int x, int y)
 {
+	dot->x += x;
+	dot->y += y;
 }
-*/

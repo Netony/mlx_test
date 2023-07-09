@@ -1,48 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.c                                              :+:      :+:    :+:   */
+/*   fdf_parse.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dajeon <dajeon@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/08 21:28:49 by dajeon            #+#    #+#             */
-/*   Updated: 2023/07/08 21:47:52 by dajeon           ###   ########.fr       */
+/*   Created: 2023/07/09 20:19:46 by dajeon            #+#    #+#             */
+/*   Updated: 2023/07/09 21:32:16 by dajeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include <fcntl.h>
 
-/*
-t_map	*ft_mapnew(t_dot ***dots, int row, int col)
+t_dot	***fdf_parse(char *filepath)
 {
-	t_map	*map;
+	int		fd;
+	char	***tab;
+	t_dot	***map;
 
-	map = (t_map *)malloc(sizeof(t_map));
-	if (map == NULL)
+	fd = open(filepath, O_RDONLY);
+	tab = parse_table(fd);
+	if (tab == NULL)
 		return (NULL);
-	map->dots = dots;
-	map->row = row;
-	map->col = col;
+	map = parse_map(tab, 10);
+	close(fd);
 	return (map);
 }
-*/
 
-/*
-void	ft_mapdel(t_map *map)
+void	fdf_close(t_vars *vars)
 {
-	ft_map
+	mlx_destroy_window(vars->mlx, vars->win);
+	exit(0);
 }
-*/
 
-t_map	*ft_mapnew(t_dot ***dots, int row, int col)
-{
-	t_map	*map;
-
-	map = (t_map *)malloc(sizeof(t_map));
-	if (map == NULL)
-		return (NULL);
-	(void)dots;
-	map->row = row;
-	map->col = col;
-	return (map);
-}

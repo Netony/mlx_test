@@ -6,15 +6,19 @@
 #    By: dajeon <dajeon@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/16 09:00:32 by dajeon            #+#    #+#              #
-#    Updated: 2023/07/08 21:37:11 by dajeon           ###   ########.fr        #
+#    Updated: 2023/07/09 21:23:15 by dajeon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf
 
 SOURCES =
-SOURCES_MANDA = fdf_parse_again.c fdf_parse_test.c fdf_parse_made.c \
-				ft_toklen.c ft_atoi_new.c ft_atoi_base.c dot.c map.c
+SOURCES_MANDA = main.c fdf_parse_test.c fdf_parse.c\
+				fdf_hook.c dot_action.c \
+				dot_print.c dot_error.c parse.c \
+				ft_toklen.c ft_atoi_new.c ft_atoi_base.c dot.c \
+				fdf_image.c \
+				tab.c fdf_image_set.c
 SOURCES_BONUS =
 			   
 INCLUDES = fdf.h
@@ -93,7 +97,7 @@ $(NAME) : $(OBJS_NEW) $(LIBFT) $(LIBFTPRINTF) $(LIBGNL)
 $(LIBFT): 
 	$(MAKE) -j3 -C $(LIB_DIR) all
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INCS) | $(OBJ_DIR)
 	$(CC) $(CFLAGS) $< -c -I $(SRC_DIR) -o $@
 
 $(OBJ_DIR):

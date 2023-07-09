@@ -62,19 +62,6 @@ int	ft_sptsize(char **spt)
 	return (len);
 }
 
-int	ft_tabsize(char ***tab)
-{
-	int	len;
-
-	len = 0;
-	while (*tab)
-	{
-		tab++;
-		len++;
-	}
-	return (len);
-}
-
 void	ft_sptdel(char **spt)
 {
 	int	i;
