@@ -6,7 +6,7 @@
 /*   By: dajeon <dajeon@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 22:21:47 by dajeon            #+#    #+#             */
-/*   Updated: 2023/07/10 07:51:43 by dajeon           ###   ########.fr       */
+/*   Updated: 2023/07/10 16:10:12 by dajeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,10 @@ typedef struct	s_img
 	int		endian;
 }	t_img;
 
+// Matrix
+int		**dot_to_matrix(t_dot *dot);
+void	matrix_del(int **matrix, int row);
+
 // Action
 void	map_action(t_dot ***map, void (*f)(t_dot *, int, int), int x, int y);
 void	fdf_move(t_dot *dot, int x, int y);
@@ -63,6 +67,10 @@ char	***fdf_parse(int fd);
 t_dot	*dot_parse_one(char *s, int i, int j, int weight);
 t_dot	***dot_parse_table(char ***s, int weight);
 
+// Map
+t_dot	***ft_tabdup(t_dot ***tab);
+t_dot	**ft_arrdup(t_dot **arr);
+
 char	*ft_cut_line(char *line);
 int		ft_lstadd(t_list **lst, void *content);
 t_list	*get_line_list(int fd);
@@ -72,6 +80,9 @@ char	**list_to_array(t_list *line);
 void	ft_lstprint(t_list *lst);
 void	ft_sptprint(char **spt);
 void	ft_tabprint(char ***tab);
+
+int		ft_arrsize(t_dot **arr);
+int		ft_tabsize(t_dot ***tab);
 
 void	ft_lstdclear(t_list **lst);
 	

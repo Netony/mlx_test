@@ -6,7 +6,7 @@
 /*   By: dajeon <dajeon@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 21:02:28 by dajeon            #+#    #+#             */
-/*   Updated: 2023/07/09 21:35:25 by dajeon           ###   ########.fr       */
+/*   Updated: 2023/07/10 12:03:35 by dajeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,13 @@ void	fdf_putmap(t_vars *vars, t_dot ***map)
 
 static void	image_set_dot(t_img *img, t_dot *dot)
 {
-	fdf_image_set(img, dot->y, dot->x, dot->color);
+	t_dot	*center;
+	int		row;
+	int		col;
+
+	row = dot->y;
+	col = dot->x;
+	fdf_image_set(img, row, col, dot->color);
 }
 
 static void	image_set_row(t_img *img, t_dot **row)
@@ -49,7 +55,7 @@ static void	image_set_tab(t_img *img, t_dot ***tab)
 		image_set_row(img, tab[i++]);
 }
 /*
-void	mlx_put_line(void *mlx_ptr, void *win_ptr, t_cood *a, t_cood *b)
+void	fdf_set(void *mlx_ptr, void *win_ptr, t_cood *a, t_cood *b)
 {
 	int		i;
 	int		n;
