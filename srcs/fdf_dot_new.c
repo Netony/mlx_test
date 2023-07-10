@@ -1,18 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dot_parse.c                                        :+:      :+:    :+:   */
+/*   fdf_dot_new.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dajeon <dajeon@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/10 07:23:42 by dajeon            #+#    #+#             */
-/*   Updated: 2023/07/10 07:24:21 by dajeon           ###   ########.fr       */
+/*   Created: 2023/07/10 18:25:59 by dajeon            #+#    #+#             */
+/*   Updated: 2023/07/10 18:29:23 by dajeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-t_dot	*dot_parse_one(char *s, int i, int j, int weight)
+static t_dot	**fdf_dot_parse_array(char **s, int i, int weight);
+
+t_dot	*ft_dotnew(int x, int y, int z, int color)
+{
+	t_dot	*new;
+
+	new = (t_dot *)malloc(sizeof(t_dot));
+	if (new == NULL)
+		return (NULL);
+	new->x = x;
+	new->y = y;
+	new->z = z;
+	if (color == 0)
+		new->color = 0x00FFFFFF;
+	else
+		new->color = color;
+	return (new);
+}
+
+t_dot	*fdf_dot_parse(char *s, int i, int j, int weight)
 {
 	int		z;
 	int		c;
@@ -22,7 +41,7 @@ t_dot	*dot_parse_one(char *s, int i, int j, int weight)
 	return (ft_dotnew(i * weight, j * weight, z, c));
 }
 
-t_dot	**dot_parse_array(char **s, int i, int weight)
+static t_dot	**fdf_dot_parse_array(char **s, int i, int weight)
 {
 	t_dot	**array;
 	int		j;
@@ -31,10 +50,10 @@ t_dot	**dot_parse_array(char **s, int i, int weight)
 	j = 0;
 	while (s[j])
 	{
-		array[j] = dot_parse(s[j], i, j, weight);
+		array[j] = fdf_dot_parse(s[j], i, j, weight);
 		if (array[j] == NULL)
 		{
-			ft_doterr_arr(array, j);
+			fdf_dot_arr_delete_n(array, j);
 			return (NULL);
 		}
 		j++;
@@ -43,23 +62,23 @@ t_dot	**dot_parse_array(char **s, int i, int weight)
 	return (array);
 }
 
-t_dot	***dot_parse_table(char ***s, int weight)
+t_dot	***fdf_dot_parse_map(char ***s, int weight)
 {
-	t_dot	***table;
+	t_dot	***map;
 	int		i;
 
-	table = (t_dot ***)malloc(sizeof(t_dot **) * (ft_tabsize(s) + 1));
+	map = (t_dot ***)malloc(sizeof(t_dot **) * (ft_tabsize(s) + 1));
 	i = 0;
 	while (s[i])
 	{
-		table[i] = dot_parse_array(s[i], i, weight);
-		if (table[i] == NULL)
+		map[i] = fdf_dot_parse_array(s[i], i, weight);
+		if (map[i] == NULL)
 		{
-			ft_doterr_tab(table, i);
+			ft_dot_map_delete_n(map, i);
 			return (NULL);
 		}
 		i++;
 	}
-	table[i] = NULL;
-	return (table);
+	map[i] = NULL;
+	return (map);
 }

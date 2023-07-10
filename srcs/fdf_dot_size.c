@@ -1,35 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   fdf_dot_size.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dajeon <dajeon@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/05 17:31:41 by dajeon            #+#    #+#             */
-/*   Updated: 2023/07/10 17:14:20 by dajeon           ###   ########.fr       */
+/*   Created: 2023/07/10 17:51:24 by dajeon            #+#    #+#             */
+/*   Updated: 2023/07/10 18:06:19 by dajeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	main(void)
+int	fdf_dot_arr_size(t_dot **arr)
 {
-	char	*path = "42.fdf";
-	t_vars	vars;
+	int	i;
 
-	vars.map = fdf_parse(path);
-	vars.width = 1280;
-	vars.height = 720;
-	vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, vars.width, vars.height, "Tutorial");
-	fdf_putmap(&vars, vars.map);
-	fdf_hook(&vars);
-	mlx_loop(vars.mlx);
-	return (0);
+	i = 0;
+	while (arr[i])
+		i++;
+	return (i);
 }
 
-/*
-int	test(void)
+int	fdf_dot_map_size(t_dot ***map)
 {
+	int	i;
+
+	i = 0;
+	while (map[i])
+		i++;
+	return (i);
 }
-*/
+
+int	fdf_dot_map_row_size(t_dot ***map)
+{
+	int	row;
+
+	row = 0;
+	while (map[row])
+		row++;
+	return (row);
+}
+
+int	fdf_dot_map_col_size(t_dot ***map)
+{
+	int	col;
+
+	col = 0;
+	while (map[0][col])
+		col++;
+	return (col);
+}
