@@ -6,7 +6,7 @@
 /*   By: dajeon <dajeon@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 22:21:47 by dajeon            #+#    #+#             */
-/*   Updated: 2023/07/10 18:25:11 by dajeon           ###   ########.fr       */
+/*   Updated: 2023/07/10 22:29:07 by dajeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include "../libft/incs/libft.h"
 # include <stdio.h>
 # include <mlx.h>
+
 
 typedef struct s_dot
 {
@@ -28,9 +29,9 @@ typedef struct s_vars
 {
 	void	*mlx;
 	void	*win;
-	t_dot	***map;
 	int		width;
 	int		height;
+	t_dot	***map;
 }	t_vars;
 
 typedef struct	s_img
@@ -41,6 +42,31 @@ typedef struct	s_img
 	int		bpp;
 	int		endian;
 }	t_img;
+
+// fdf_dup_oper
+void	dup_translate(t_dot ***dup, int x, int y);
+void	dup_rotate(t_dot ***dup, double a, double b, double c);
+void	dup_zoom(t_dot ***dup, int p);
+void	dot_sum(t_dot *a, t_dot *b);
+void	dot_sub(t_dot *a, t_dot *b);
+
+void	dot_translate(t_dot *dot, int x, int y);
+void	dot_zoom(t_dot *dot, t_dot *center, int p);
+void	dot_rotate(t_dot *dot, double a, double b, double c);
+
+// fdf_dot_oper
+void	dot_add(t_dot *dot, int x, int y, int z);
+void	dot_transform(t_dot *dot, double **matrix);
+void	dot_iofn(t_dot *center, t_dot *dot, int i, int n);
+void	dot_sum(t_dot *a, t_dot *b);
+void	dot_sub(t_dot *a, t_dot *b);
+
+// fdf_matrix
+double	**ft_matrix_new(double *row, int m, int n);
+void	ft_matrix_del(double **matrix, int m, int n);
+
+// fdf_dot_math
+int	dot_larger_size(t_dot *d1, t_dot *d2);
 
 // FDF_image
 t_img	*fdf_image_init(t_vars *vars);
@@ -116,7 +142,7 @@ char	***array_to_tab(char **arr);
 char	**list_to_array(t_list *line);
 
 // fdf
-t_dot	***fdf_map_parse(char *filepath)
+t_dot	***fdf_map_parse(char *filepath);
 void	fdf_hook(t_vars *vars);
 void	fdf_close(t_vars *vars);
 

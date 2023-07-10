@@ -6,13 +6,13 @@
 /*   By: dajeon <dajeon@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 17:13:18 by dajeon            #+#    #+#             */
-/*   Updated: 2023/07/10 17:18:11 by dajeon           ###   ########.fr       */
+/*   Updated: 2023/07/10 19:23:43 by dajeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	larger_size(t_dot *d1, t_dot *d2)
+int	dot_larger_size(t_dot *d1, t_dot *d2)
 {
 	int	dx;
 	int	dy;

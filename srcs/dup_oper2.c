@@ -1,53 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf_size.c                                         :+:      :+:    :+:   */
+/*   dup_oper2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dajeon <dajeon@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/10 18:20:12 by dajeon            #+#    #+#             */
-/*   Updated: 2023/07/10 21:16:22 by dajeon           ###   ########.fr       */
+/*   Created: 2023/07/10 22:30:00 by dajeon            #+#    #+#             */
+/*   Updated: 2023/07/10 22:33:55 by dajeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_tabsize(char ***tab)
-{
-	int	size;
+#include "fdf.h"
 
-	size = 0;
-	while (tab[size])
-		size++;
-	return (size);
-}
-
-int	ft_sptsize(char **spt)
-{
-	int	size;
-
-	size = 0;
-	while (spt[size])
-		size++;
-	return (size);
-}
-
-int	ft_tabcheck(char ***tab)
+void	dup_sum(t_dot ***dup, t_dot *center)
 {
 	int	i;
-	int	size;
-	int	check;
+	int	j;
 
 	i = 0;
-	while (tab[i])
+	while (dup[i])
 	{
-		size = ft_sptsize(tab[i]);
-		if (i == 0)
-			check = size;
-		else
+		j = 0;
+		while (dup[i][j])
 		{
-			if (check != size)
-				return (-1);
+			dot_sum(dup[i][j], center);
+			j++;
 		}
 		i++;
 	}
-	return (size);
+}
+
+void	dup_sub(t_dot ***dup, t_dot *center)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (dup[i])
+	{
+		j = 0;
+		while (dup[i][j])
+		{
+			dot_sub(dup[i][j], center);
+			j++;
+		}
+		i++;
+	}
 }

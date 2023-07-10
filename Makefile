@@ -6,7 +6,7 @@
 #    By: dajeon <dajeon@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/16 09:00:32 by dajeon            #+#    #+#              #
-#    Updated: 2023/07/10 18:29:22 by dajeon           ###   ########.fr        #
+#    Updated: 2023/07/10 22:32:03 by dajeon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,12 +16,16 @@ SOURCES =
 SOURCES_MANDA = main.c \
 				fdf_dot_new.c fdf_dot_delete.c fdf_dot_dup.c \
 				fdf_dot_math.c fdf_dot_operation.c fdf_dot_size.c \
-				fdf_image.c fdf_image_set.c \
+				fdf_image.c fdf_image_set_dot.c \
 				fdf_hook.c \
 				fdf_parse.c \
 				fdf_put.c \
 				fdf_size.c fdf_delete.c \
 				ft_toklen.c ft_atoi_base.c ft_atoi_new.c \
+				fdf_math.c \
+				dup_oper.c dup_oper2.c \
+				fdf_dot_rotate.c fdf_dot_rotate_base.c fdf_dot_translate.c \
+				fdf_matrix.c \
 				temp.c \
 
 SOURCES_BONUS =

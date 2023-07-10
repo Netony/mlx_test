@@ -6,12 +6,14 @@
 /*   By: dajeon <dajeon@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 20:19:46 by dajeon            #+#    #+#             */
-/*   Updated: 2023/07/10 18:25:10 by dajeon           ###   ########.fr       */
+/*   Updated: 2023/07/10 21:15:48 by dajeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include <fcntl.h>
+
+char	***parse_table(int fd);
 
 t_dot	***fdf_map_parse(char *filepath)
 {
@@ -23,7 +25,7 @@ t_dot	***fdf_map_parse(char *filepath)
 	tab = parse_table(fd);
 	if (tab == NULL)
 		return (NULL);
-	map = parse_map(tab, 10);
+	map = fdf_dot_parse_map(tab, 10);
 	close(fd);
 	return (map);
 }
@@ -44,7 +46,7 @@ char	***parse_table(int fd)
 	if (line == NULL)
 		return (NULL);
 	arr = list_to_array(line);
-	ft_lstdclear(&line);
+	ft_lstclear_clean(&line);
 	if (arr == NULL)
 		return (NULL);
 	tab = array_to_tab(arr);

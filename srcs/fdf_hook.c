@@ -6,16 +6,18 @@
 /*   By: dajeon <dajeon@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 20:01:14 by dajeon            #+#    #+#             */
-/*   Updated: 2023/07/09 21:53:02 by dajeon           ###   ########.fr       */
+/*   Updated: 2023/07/10 22:07:50 by dajeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
 static int	hook_key(int keycode, t_vars *vars);
-void	hook_move(int keycode, t_vars *vars);
-void	hook_close(int keycode, t_vars *vars);
-void	move(t_vars *vars, int x, int y);
+void		hook_close(int keycode, t_vars *vars);
+void		hook_translate(int keycode, t_vars *vars);
+void		translate_put(t_vars *vars, int x, int y);
+void		hook_rotate(int keycode, t_vars *vars);
+void		rotate_put(t_vars *vars, double a, double b);
 
 void	fdf_hook(t_vars *vars)
 {
@@ -25,14 +27,9 @@ void	fdf_hook(t_vars *vars)
 static int	hook_key(int keycode, t_vars *vars)
 {
 	hook_close(keycode, vars);
-	hook_move(keycode, vars);
+	hook_translate(keycode, vars);
+	hook_rotate(keycode, vars);
 	return (0);
-}
-
-void	move(t_vars *vars, int x, int y)
-{
-	map_action(vars->map, fdf_move, x, y);
-	fdf_putmap(vars, vars->map);
 }
 
 void	hook_close(int keycode, t_vars *vars)
@@ -41,14 +38,38 @@ void	hook_close(int keycode, t_vars *vars)
 		fdf_close(vars);
 }
 
-void	hook_move(int keycode, t_vars *vars)
+void	translate_put(t_vars *vars, int x, int y)
+{
+	dup_translate(vars->map, x, y);
+	fdf_putmap(vars, vars->map);
+}
+
+void	rotate_put(t_vars *vars, double a, double b)
+{
+	dup_rotate(vars->map, a, b, 0);
+	fdf_putmap(vars, vars->map);
+}
+
+void	hook_translate(int keycode, t_vars *vars)
 {
 	if (keycode == 40)
-		move(vars, -10, 0);
+		translate_put(vars, 0, -10);
 	if (keycode == 38)
-		move(vars, 10, 0);
+		translate_put(vars, 0, 10);
 	if (keycode == 4)
-		move(vars, 0, -10);
+		translate_put(vars, -10, 0);
 	if (keycode == 37)
-		move(vars, 0, 10);
+		translate_put(vars, 10, 0);
+}
+
+void	hook_rotate(int keycode, t_vars *vars)
+{
+	if (keycode == 123)
+		rotate_put(vars, -0.1, 0);
+	if (keycode == 124)
+		rotate_put(vars, 0.1, 0);
+	if (keycode == 125)
+		rotate_put(vars, 0, 0.1);
+	if (keycode == 126)
+		rotate_put(vars, 0, -0.1);
 }

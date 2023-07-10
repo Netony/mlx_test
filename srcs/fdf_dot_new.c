@@ -6,7 +6,7 @@
 /*   By: dajeon <dajeon@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 18:25:59 by dajeon            #+#    #+#             */
-/*   Updated: 2023/07/10 18:29:23 by dajeon           ###   ########.fr       */
+/*   Updated: 2023/07/10 19:17:36 by dajeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ t_dot	***fdf_dot_parse_map(char ***s, int weight)
 		map[i] = fdf_dot_parse_array(s[i], i, weight);
 		if (map[i] == NULL)
 		{
-			ft_dot_map_delete_n(map, i);
+			fdf_dot_map_delete_n(map, i);
 			return (NULL);
 		}
 		i++;
