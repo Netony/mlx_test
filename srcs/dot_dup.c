@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.c                                              :+:      :+:    :+:   */
+/*   dot_dup.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dajeon <dajeon@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/10 07:49:39 by dajeon            #+#    #+#             */
-/*   Updated: 2023/07/10 16:10:14 by dajeon           ###   ########.fr       */
+/*   Created: 2023/07/10 16:15:11 by dajeon            #+#    #+#             */
+/*   Updated: 2023/07/10 16:15:56 by dajeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,22 +58,3 @@ t_dot	**ft_arrdup(t_dot **arr)
 	return (dup);
 }
 
-int	ft_maprow(t_dot ***map)
-{
-	int	row;
-
-	row = 0;
-	while (map[row])
-		row++;
-	return (row);
-}
-
-int	ft_mapcol(t_dot	***map)
-{
-	int	col;
-
-	col = 0;
-	while (map[0][col])
-		col++;
-	return (col);
-}
