@@ -6,7 +6,7 @@
 /*   By: dajeon <dajeon@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 15:29:14 by dajeon            #+#    #+#             */
-/*   Updated: 2023/07/11 17:25:04 by dajeon           ###   ########.fr       */
+/*   Updated: 2023/07/11 19:03:33 by dajeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,11 @@ void	fdf_put_reset(t_vars *vars)
 	dot_mapdel(vars->map);
 	ret = fdf_put_start(vars);
 	if (ret < 0)
-		error_errno();
+	{
+		mlx_destroy_window(vars->mlx, vars->win);
+		dot_mapdel(vars->origin);
+		error_exit("fdf");
+	}
 }
 
 void	fdf_put_oblique(t_vars *vars)

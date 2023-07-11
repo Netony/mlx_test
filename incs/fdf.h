@@ -6,7 +6,7 @@
 /*   By: dajeon <dajeon@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 22:21:47 by dajeon            #+#    #+#             */
-/*   Updated: 2023/07/11 17:09:08 by dajeon           ###   ########.fr       */
+/*   Updated: 2023/07/11 18:57:03 by dajeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ void	fdf_image_set(t_img *img, int x, int y, int color);
 int		fdf_image_set_check(t_vars *vars, int x, int y);
 void	fdf_image_destroy(t_vars *vars, t_img *img);
 
-void	error_argument(void);
-void	error_errno(void);
+void	set_error_argument(void);
+void	error_exit(char *name);
 
 int		fdf_put_start(t_vars *vars);
 void	fdf_put_isometric(t_vars *vars);

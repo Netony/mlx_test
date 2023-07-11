@@ -6,7 +6,7 @@
 /*   By: dajeon <dajeon@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 12:07:27 by dajeon            #+#    #+#             */
-/*   Updated: 2023/07/11 17:59:24 by dajeon           ###   ########.fr       */
+/*   Updated: 2023/07/11 18:57:54 by dajeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ static t_dot	*dot_parse(char *s, int i, int j, int weight)
 	int				z;
 	unsigned int	color;
 
-	color = 0;
 	z = ft_atoi_base(s);
 	s += ft_duplen(s, "+-");
 	s += ft_duplen(s, "0123456789");
@@ -54,12 +53,18 @@ static t_dot	*dot_parse(char *s, int i, int j, int weight)
 		if (ft_strncmp(s, "0x", 2) == 0)
 			color = ft_atoi_base(s);
 		else
-			error_argument();
+		{
+			set_error_argument();
+			return (NULL);
+		}
 	}
 	else if (*s == '\0')
 		color = 0x00FFFFFF;
 	else
-		error_argument();
+	{
+		set_error_argument();
+		return (NULL);
+	}
 	return (dot_new(i * weight, j * weight, z, color));
 }
 

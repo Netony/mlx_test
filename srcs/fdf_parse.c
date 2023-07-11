@@ -6,7 +6,7 @@
 /*   By: dajeon <dajeon@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 20:19:46 by dajeon            #+#    #+#             */
-/*   Updated: 2023/07/11 16:09:02 by dajeon           ###   ########.fr       */
+/*   Updated: 2023/07/11 19:03:33 by dajeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,17 @@ t_dot	***fdf_map_parse(char *filepath, int weight)
 
 	fd = open(filepath, O_RDONLY);
 	tab = parse_table(fd);
+	close(fd);
 	if (tab == NULL)
 		return (NULL);
 	if (parse_size_check(tab) < 0)
-		error_argument();
+	{
+		ft_tabdel(tab);
+		set_error_argument();
+		return (NULL);
+	}
 	map = map_parse(tab, weight);
 	ft_tabdel(tab);
-	close(fd);
 	return (map);
 }
 
