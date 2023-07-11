@@ -6,11 +6,12 @@
 /*   By: dajeon <dajeon@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 11:52:23 by dajeon            #+#    #+#             */
-/*   Updated: 2023/07/11 12:01:30 by dajeon           ###   ########.fr       */
+/*   Updated: 2023/07/11 16:20:31 by dajeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "dot.h"
+#include "fdf_utils.h"
 
 int	map_get_x_center(t_dot ***map)
 {

@@ -6,11 +6,12 @@
 /*   By: dajeon <dajeon@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 19:33:19 by dajeon            #+#    #+#             */
-/*   Updated: 2023/07/11 10:20:41 by dajeon           ###   ########.fr       */
+/*   Updated: 2023/07/11 15:23:39 by dajeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+
 void	ft_matrix_del(double **matrix, int m, int n);
 
 double	**ft_matrix_new(double *row, int m, int n)

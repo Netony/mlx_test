@@ -6,11 +6,11 @@
 /*   By: dajeon <dajeon@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 20:37:38 by dajeon            #+#    #+#             */
-/*   Updated: 2023/07/11 11:48:37 by dajeon           ###   ########.fr       */
+/*   Updated: 2023/07/11 15:23:50 by dajeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "fdf_utils.h"
 
 #define HEXA_UPPER "0123456789ABCDEF"
 #define HEXA_LOWER "0123456789abcdef"
@@ -18,17 +18,8 @@
 
 static long	ft_make_number(long nbr, int new, int radix);
 static int	ft_ctoi_base(int c, const char *base);
-static long	ft_strtol_base(const char *nptr, const char *base);
-
-int	ft_issign(int c)
-{
-	if (c == '+')
-		return (1);
-	else if (c == '-')
-		return (-1);
-	else
-		return (0);
-}
+static long	ft_strtol_base(int sign, const char *nptr, const char *base);
+static int	ft_issign(int c);
 
 int	ft_atoi_base(const char *nptr)
 {
@@ -36,6 +27,7 @@ int	ft_atoi_base(const char *nptr)
 	unsigned int	upper;
 	unsigned int	lower;
 
+	sign = 1;
 	while (ft_isspace(*nptr))
 		nptr++;
 	if (ft_issign(*nptr))
@@ -46,14 +38,14 @@ int	ft_atoi_base(const char *nptr)
 	else if (ft_strncmp(nptr, "0x", 2) == 0)
 	{
 		nptr += 2;
-		upper = ft_strtol_base(nptr, HEXA_UPPER);
-		lower = ft_strtol_base(nptr, HEXA_LOWER);
+		upper = ft_strtol_base(1, nptr, HEXA_UPPER);
+		lower = ft_strtol_base(1, nptr, HEXA_LOWER);
 		if (upper > lower)
 			return (upper);
 		else
 			return (lower);
 	}
-	return (ft_strtol_base(nptr, DECIMAL));
+	return (ft_strtol_base(sign, nptr, DECIMAL));
 }
 
 static long	ft_strtol_base(int sign, const char *nptr, const char *base)
@@ -95,7 +87,7 @@ static long	ft_make_number(long nbr, int new, int radix)
 static int	ft_ctoi_base(int c, const char *base)
 {
 	int	i;
-	
+
 	i = 0;
 	while (base[i])
 	{
@@ -104,4 +96,14 @@ static int	ft_ctoi_base(int c, const char *base)
 		i++;
 	}
 	return (-1);
+}
+
+static int	ft_issign(int c)
+{
+	if (c == '+')
+		return (1);
+	else if (c == '-')
+		return (-1);
+	else
+		return (0);
 }

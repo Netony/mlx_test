@@ -6,7 +6,7 @@
 #    By: dajeon <dajeon@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/16 09:00:32 by dajeon            #+#    #+#              #
-#    Updated: 2023/07/11 12:27:47 by dajeon           ###   ########.fr        #
+#    Updated: 2023/07/11 17:39:25 by dajeon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,23 +16,32 @@ SOURCES = dot/dot.c \
 		  dot/dot_operation.c \
 		  dot/dot_rotate.c \
 		  dot/map_get_data.c \
-		  dot/map_operation.c
-		  dot/map_parse.c
-SOURCES_MANDA = main.c \
-				fdf_image.c fdf_image_set_dot.c \
-				fdf_hook.c \
-				fdf_parse.c \
-				fdf_put.c \
-				fdf_size.c fdf_delete.c \
-				ft_toklen.c ft_atoi_base.c ft_atoi_new.c \
-				fdf_math.c \
-				dup_oper.c dup_center.c \
-				fdf_dot_rotate.c \
-				fdf_matrix.c \
+		  dot/map_operation.c \
+		  dot/map_parse.c \
+		  dot/ft_mapdup.c \
+		  dot/dot_color.c \
+		  fdf_error.c \
+		  fdf_parse.c \
+		  fdf_image.c \
+		  fdf_image_set_map.c \
+		  fdf_hook.c \
+		  fdf_hook_key.c \
+		  fdf_putmap.c \
+		  fdf_action.c \
+		  fdf_action2.c \
+		  fdf_utils.c \
+		  fdf_utils2.c \
+		  fdf_utils3.c \
+		  fdf_utils_math.c \
+		  fdf_utils_math2.c \
+		  fdf_utils_matrix.c \
+		  ft_toklen.c \
+		  ft_atoi_base.c 
 
-SOURCES_BONUS =
+SOURCES_MANDA = main.c 
+SOURCES_BONUS = main_bonus.c
 			   
-INCLUDES = fdf.h
+INCLUDES = fdf.h fdf_utils.h dot.h
 
 LIBFT = libft.a
 LIB = ft 
@@ -42,7 +51,7 @@ LIB = ft
 LIB_DIR = libft
 SRC_DIR = srcs
 OBJ_DIR = objs
-INC_DIR = srcs
+INC_DIR = incs
 
 SRCS := $(addprefix $(SRC_DIR)/, $(SOURCES))
 SRCS_MANDA := $(addprefix $(SRC_DIR)/, $(SOURCES_MANDA))
@@ -68,7 +77,7 @@ CC = gcc
 AR = ar
 RM = rm
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address
 LIBFLAGS = -lm -lmlx -framework OpenGl -framework AppKit -l$(LIB) -L$(LIB_DIR)
 
 ARFLAGS = crus
@@ -102,14 +111,17 @@ re :
 # Dependency ***************************************************************** #
 
 $(NAME) : $(OBJS_NEW) $(LIBFT) $(LIBFTPRINTF) $(LIBGNL)
-	$(CC) $(CFLAGS) $(OBJS_NEW) -I $(INC_DIR) -o $(NAME) $(LIBFLAGS)
+	$(CC) $(CFLAGS) $(OBJS_NEW) -o $(NAME) $(LIBFLAGS)
 
 $(LIBFT): 
 	$(MAKE) -j3 -C $(LIB_DIR) all
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INCS) | $(OBJ_DIR)
-	$(CC) $(CFLAGS) $< -c -I $(SRC_DIR) -o $@
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INCS) | $(OBJ_DIR) $(OBJ_DIR)/dot
+	$(CC) $(CFLAGS) $< -c -I $(INC_DIR) -o $@
 
 $(OBJ_DIR):
 	mkdir $(OBJ_DIR)
+
+$(OBJ_DIR)/dot:
+	mkdir $(OBJ_DIR)/dot
 

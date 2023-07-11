@@ -6,11 +6,12 @@
 /*   By: dajeon <dajeon@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 19:49:33 by dajeon            #+#    #+#             */
-/*   Updated: 2023/07/11 10:20:42 by dajeon           ###   ########.fr       */
+/*   Updated: 2023/07/11 15:44:14 by dajeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include "fdf_utils.h"
 #include <math.h>
 
 static double	**row_to_matrix(double *(*get)(double), double r);
@@ -27,9 +28,9 @@ void	dot_rotate(t_dot *dot, double a, double b, double c)
 	yaw = row_to_matrix(get_yaw_row, c);
 	pitch = row_to_matrix(get_pitch_row, b);
 	roll = row_to_matrix(get_roll_row, a);
-	dot_transform(dot, yaw);
-	dot_transform(dot, pitch);
-	dot_transform(dot, roll);
+	dot_trans(dot, yaw);
+	dot_trans(dot, pitch);
+	dot_trans(dot, roll);
 	ft_matrix_del(yaw, 3, 3);
 	ft_matrix_del(pitch, 3, 3);
 	ft_matrix_del(roll, 3, 3);

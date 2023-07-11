@@ -6,11 +6,12 @@
 /*   By: dajeon <dajeon@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 13:43:39 by dajeon            #+#    #+#             */
-/*   Updated: 2023/07/11 10:35:44 by dajeon           ###   ########.fr       */
+/*   Updated: 2023/07/11 13:38:34 by dajeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include <stdlib.h>
 
 t_img	*fdf_image_init(t_vars *vars)
 {
@@ -32,7 +33,7 @@ t_img	*fdf_image_init(t_vars *vars)
 
 void	fdf_image_set(t_img *img, int x, int y, int color)
 {
-	char			*dst;
+	char	*dst;
 
 	dst = img->addr;
 	dst += img->row * y;

@@ -6,11 +6,11 @@
 /*   By: dajeon <dajeon@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 20:21:34 by dajeon            #+#    #+#             */
-/*   Updated: 2023/07/11 11:23:52 by dajeon           ###   ########.fr       */
+/*   Updated: 2023/07/11 13:41:11 by dajeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "fdf_utils.h"
 
 int	ft_toklen(const char *s, const char *set)
 {

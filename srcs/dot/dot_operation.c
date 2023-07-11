@@ -6,7 +6,7 @@
 /*   By: dajeon <dajeon@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 17:41:29 by dajeon            #+#    #+#             */
-/*   Updated: 2023/07/11 12:26:29 by dajeon           ###   ########.fr       */
+/*   Updated: 2023/07/11 15:24:03 by dajeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	dot_trans(t_dot *dot, double **matrix)
 
 void	dot_scalar_p(t_dot *dot, int p)
 {
-
 	dot->x = dot->x * p / 100;
 	dot->y = dot->y * p / 100;
 	dot->z = dot->z * p / 100;
