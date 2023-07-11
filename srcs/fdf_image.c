@@ -6,7 +6,7 @@
 /*   By: dajeon <dajeon@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 13:43:39 by dajeon            #+#    #+#             */
-/*   Updated: 2023/07/10 19:29:08 by dajeon           ###   ########.fr       */
+/*   Updated: 2023/07/11 10:35:44 by dajeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,11 @@ void	fdf_image_set(t_img *img, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-int	fdf_image_set_check(int x, int y)
+int	fdf_image_set_check(t_vars *vars, int x, int y)
 {
-	if (x < 0)
+	if (x < 0 || x > vars->width)
 		return (0);
-	if (y < 0)
+	if (y < 0 || y > vars->height)
 		return (0);
 	return (1);
 }

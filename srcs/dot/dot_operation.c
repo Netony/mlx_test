@@ -6,11 +6,11 @@
 /*   By: dajeon <dajeon@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 17:41:29 by dajeon            #+#    #+#             */
-/*   Updated: 2023/07/11 10:01:17 by dajeon           ###   ########.fr       */
+/*   Updated: 2023/07/11 12:26:29 by dajeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "dot.h"
 
 void	dot_add(t_dot *dot, int x, int y, int z)
 {
@@ -19,7 +19,7 @@ void	dot_add(t_dot *dot, int x, int y, int z)
 	dot->z += z;
 }
 
-void	dot_transform(t_dot *dot, double **matrix)
+void	dot_trans(t_dot *dot, double **matrix)
 {
 	double	x;
 	double	y;
@@ -33,7 +33,7 @@ void	dot_transform(t_dot *dot, double **matrix)
 	dot->z = matrix[2][0] * x + matrix[2][1] * y + matrix[2][2] * z;
 }
 
-void	dot_scalar_percent(t_dot *dot, int p)
+void	dot_scalar_p(t_dot *dot, int p)
 {
 
 	dot->x = dot->x * p / 100;

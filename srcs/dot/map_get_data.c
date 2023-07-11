@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dup_center.c                                       :+:      :+:    :+:   */
+/*   map_center.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dajeon <dajeon@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/11 09:33:15 by dajeon            #+#    #+#             */
-/*   Updated: 2023/07/11 09:59:23 by dajeon           ###   ########.fr       */
+/*   Created: 2023/07/11 11:52:23 by dajeon            #+#    #+#             */
+/*   Updated: 2023/07/11 12:01:30 by dajeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "dot.h"
 
-int	get_center_x(t_dot ***map)
+int	map_get_x_center(t_dot ***map)
 {
 	int	i;
 	int	j;
@@ -36,7 +36,7 @@ int	get_center_x(t_dot ***map)
 	return ((max + min) / 2);
 }
 
-int	get_center_y(t_dot ***map)
+int	map_get_y_center(t_dot ***map)
 {
 	int	i;
 	int	j;
@@ -60,7 +60,7 @@ int	get_center_y(t_dot ***map)
 	return ((max + min) / 2);
 }
 
-int	get_center_z(t_dot ***map)
+int	map_get_z_center(t_dot ***map)
 {
 	int	i;
 	int	j;
@@ -82,4 +82,24 @@ int	get_center_z(t_dot ***map)
 		i++;
 	}
 	return ((max + min) / 2);
+}
+
+int	map_get_row_size(t_dot ***map)
+{
+	int	row;
+
+	row = 0;
+	while (map[row])
+		row++;
+	return (row);
+}
+
+int	map_get_col_size(t_dot ***map)
+{
+	int	col;
+
+	col = 0;
+	while (map[0][col])
+		col++;
+	return (col);
 }

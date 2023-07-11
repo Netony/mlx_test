@@ -6,7 +6,7 @@
 /*   By: dajeon <dajeon@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 20:01:14 by dajeon            #+#    #+#             */
-/*   Updated: 2023/07/11 10:02:51 by dajeon           ###   ########.fr       */
+/*   Updated: 2023/07/11 10:39:40 by dajeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void		hook_translate(int keycode, t_vars *vars);
 void		translate_put(t_vars *vars, int x, int y);
 void		hook_rotate(int keycode, t_vars *vars);
 void		rotate_put(t_vars *vars, double a, double b);
+void		hook_zoom(int keycode, t_vars *vars);
+void		zoom_put(t_vars *vars, int p);
 
 void	fdf_hook(t_vars *vars)
 {
@@ -29,6 +31,7 @@ static int	hook_key(int keycode, t_vars *vars)
 	hook_close(keycode, vars);
 	hook_translate(keycode, vars);
 	hook_rotate(keycode, vars);
+	hook_zoom(keycode, vars);
 	return (0);
 }
 
@@ -48,6 +51,21 @@ void	rotate_put(t_vars *vars, double a, double b)
 {
 	dup_rotate(vars->map, a, b, 0);
 	fdf_putmap(vars, vars->map);
+}
+
+void	zoom_put(t_vars *vars, int p)
+{
+	dup_zoom(vars->map, p);
+	fdf_putmap(vars, vars->map);
+}
+
+void	hook_zoom(int keycode, t_vars *vars)
+{
+	if (keycode == 24)
+		zoom_put(vars, 110);
+	else if (keycode == 27)
+		zoom_put(vars, 90);
+	
 }
 
 void	hook_translate(int keycode, t_vars *vars)

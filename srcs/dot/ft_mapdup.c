@@ -6,28 +6,23 @@
 /*   By: dajeon <dajeon@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 16:15:11 by dajeon            #+#    #+#             */
-/*   Updated: 2023/07/10 19:20:16 by dajeon           ###   ########.fr       */
+/*   Updated: 2023/07/11 12:10:34 by dajeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "dot.h"
+#include <stdlib.h>
 
+static int		dot_arr_get_size(t_dot **arr);
+static t_dot	*ft_dotdup(t_dot *dot);
 static t_dot	**ft_arrdup(t_dot **arr);
-
-t_dot	*ft_dotdup(t_dot *dot)
-{
-	t_dot	*dup;
-
-	dup = ft_dotnew(dot->x, dot->y, dot->z, dot->color);
-	return (dup);
-}
 
 t_dot	***ft_mapdup(t_dot ***map)
 {
 	t_dot	***dup;
 	int		i;
 
-	dup = (t_dot ***)malloc(sizeof(t_dot **) * fdf_dot_map_size(map));
+	dup = (t_dot ***)malloc(sizeof(t_dot **) * map_get_size_row(map));
 	if (dup == NULL)
 		return (NULL);
 	i = 0;
@@ -36,7 +31,7 @@ t_dot	***ft_mapdup(t_dot ***map)
 		dup[i] = ft_arrdup(map[i]);
 		if (dup[i] == NULL)
 		{
-			fdf_dot_map_delete_n(dup, i);
+			dot_map_delete_n(dup, i);
 			return (NULL);
 		}
 		i++;
@@ -45,12 +40,20 @@ t_dot	***ft_mapdup(t_dot ***map)
 	return (dup);
 }
 
+static t_dot	*ft_dotdup(t_dot *dot)
+{
+	t_dot	*dup;
+
+	dup = ft_dotnew(dot->x, dot->y, dot->z, dot->color);
+	return (dup);
+}
+
 static 	t_dot	**ft_arrdup(t_dot **arr)
 {
 	t_dot	**dup;
 	int		i;
 
-	dup = (t_dot **)malloc(sizeof(t_dot *) * fdf_dot_arr_size(arr));
+	dup = (t_dot **)malloc(sizeof(t_dot *) * dot_arr_size(arr));
 	if (dup == NULL)
 		return (NULL);
 	i = 0;
@@ -59,11 +62,21 @@ static 	t_dot	**ft_arrdup(t_dot **arr)
 		dup[i] = ft_dotdup(arr[i]);
 		if (dup[i] == NULL)
 		{
-			fdf_dot_arr_delete_n(dup, i);
+			dot_arr_delete_n(dup, i);
 			return (NULL);
 		}
 		i++;
 	}
 	dup[i] = NULL;
 	return (dup);
+}
+
+static int	dot_arr_get_size(t_dot **arr)
+{
+	int	i;
+
+	i = 0;
+	while (arr[i])
+		i++;
+	return (i);
 }

@@ -6,16 +6,19 @@
 #    By: dajeon <dajeon@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/16 09:00:32 by dajeon            #+#    #+#              #
-#    Updated: 2023/07/11 10:04:24 by dajeon           ###   ########.fr        #
+#    Updated: 2023/07/11 12:27:47 by dajeon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf
 
-SOURCES =
+SOURCES = dot/dot.c \
+		  dot/dot_operation.c \
+		  dot/dot_rotate.c \
+		  dot/map_get_data.c \
+		  dot/map_operation.c
+		  dot/map_parse.c
 SOURCES_MANDA = main.c \
-				fdf_dot_new.c fdf_dot_delete.c fdf_dot_dup.c \
-				fdf_dot_math.c fdf_dot_operation.c fdf_dot_size.c \
 				fdf_image.c fdf_image_set_dot.c \
 				fdf_hook.c \
 				fdf_parse.c \
