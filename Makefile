@@ -6,7 +6,7 @@
 #    By: dajeon <dajeon@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/16 09:00:32 by dajeon            #+#    #+#              #
-#    Updated: 2023/07/11 17:39:25 by dajeon           ###   ########.fr        #
+#    Updated: 2023/07/11 17:55:15 by dajeon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,7 +77,7 @@ CC = gcc
 AR = ar
 RM = rm
 
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror
 LIBFLAGS = -lm -lmlx -framework OpenGl -framework AppKit -l$(LIB) -L$(LIB_DIR)
 
 ARFLAGS = crus
