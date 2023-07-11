@@ -6,13 +6,21 @@
 /*   By: dajeon <dajeon@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 17:27:49 by dajeon            #+#    #+#             */
-/*   Updated: 2023/07/10 17:27:56 by dajeon           ###   ########.fr       */
+/*   Updated: 2023/07/11 09:42:18 by dajeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_larger(int x, int y)
 {
 	if (x > y)
+		return (x);
+	else
+		return (y);
+}
+
+int	ft_smaller(int x, int y)
+{
+	if (x < y)
 		return (x);
 	else
 		return (y);

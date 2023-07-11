@@ -6,7 +6,7 @@
 /*   By: dajeon <dajeon@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 20:01:14 by dajeon            #+#    #+#             */
-/*   Updated: 2023/07/10 22:07:50 by dajeon           ###   ########.fr       */
+/*   Updated: 2023/07/11 10:02:51 by dajeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	hook_close(int keycode, t_vars *vars)
 
 void	translate_put(t_vars *vars, int x, int y)
 {
-	dup_translate(vars->map, x, y);
+	dup_translate(vars->map, x, y, 0);
 	fdf_putmap(vars, vars->map);
 }
 

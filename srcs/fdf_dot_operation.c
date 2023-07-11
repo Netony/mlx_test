@@ -6,7 +6,7 @@
 /*   By: dajeon <dajeon@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 17:41:29 by dajeon            #+#    #+#             */
-/*   Updated: 2023/07/10 22:22:32 by dajeon           ###   ########.fr       */
+/*   Updated: 2023/07/11 10:01:17 by dajeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,23 +33,10 @@ void	dot_transform(t_dot *dot, double **matrix)
 	dot->z = matrix[2][0] * x + matrix[2][1] * y + matrix[2][2] * z;
 }
 
-void	dot_iofn(t_dot *center, t_dot *dot, int i, int n)
+void	dot_scalar_percent(t_dot *dot, int p)
 {
-	dot->x = ft_iofn(center->x, dot->x, i, n);
-	dot->y = ft_iofn(center->y, dot->y, i, n);
-	dot->z = ft_iofn(center->z, dot->z, i, n);
-}
 
-void	dot_sum(t_dot *a, t_dot *b)
-{
-	a->x += b->x;
-	a->y += b->y;
-	a->z += b->z;
-}
-
-void	dot_sub(t_dot *a, t_dot *b)
-{
-	a->x -= b->x;
-	a->y -= b->y;
-	a->z -= b->z;
+	dot->x = dot->x * p / 100;
+	dot->y = dot->y * p / 100;
+	dot->z = dot->z * p / 100;
 }

@@ -6,7 +6,7 @@
 #    By: dajeon <dajeon@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/16 09:00:32 by dajeon            #+#    #+#              #
-#    Updated: 2023/07/10 22:32:03 by dajeon           ###   ########.fr        #
+#    Updated: 2023/07/11 10:04:24 by dajeon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,10 +23,9 @@ SOURCES_MANDA = main.c \
 				fdf_size.c fdf_delete.c \
 				ft_toklen.c ft_atoi_base.c ft_atoi_new.c \
 				fdf_math.c \
-				dup_oper.c dup_oper2.c \
-				fdf_dot_rotate.c fdf_dot_rotate_base.c fdf_dot_translate.c \
+				dup_oper.c dup_center.c \
+				fdf_dot_rotate.c \
 				fdf_matrix.c \
-				temp.c \
 
 SOURCES_BONUS =
 			   
@@ -67,7 +66,6 @@ AR = ar
 RM = rm
 
 CFLAGS = -Wall -Wextra -Werror
-# LIBFLAGS = -lm -L. -lmlx -framework OpenGl -framework AppKit -l$(LIB) -L$(LIB_DIR)
 LIBFLAGS = -lm -lmlx -framework OpenGl -framework AppKit -l$(LIB) -L$(LIB_DIR)
 
 ARFLAGS = crus

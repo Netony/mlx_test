@@ -6,7 +6,7 @@
 /*   By: dajeon <dajeon@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 22:21:47 by dajeon            #+#    #+#             */
-/*   Updated: 2023/07/10 22:29:07 by dajeon           ###   ########.fr       */
+/*   Updated: 2023/07/11 10:02:19 by dajeon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,22 +44,15 @@ typedef struct	s_img
 }	t_img;
 
 // fdf_dup_oper
-void	dup_translate(t_dot ***dup, int x, int y);
+void	dup_translate(t_dot ***dup, int x, int y, int z);
 void	dup_rotate(t_dot ***dup, double a, double b, double c);
 void	dup_zoom(t_dot ***dup, int p);
-void	dot_sum(t_dot *a, t_dot *b);
-void	dot_sub(t_dot *a, t_dot *b);
-
-void	dot_translate(t_dot *dot, int x, int y);
-void	dot_zoom(t_dot *dot, t_dot *center, int p);
-void	dot_rotate(t_dot *dot, double a, double b, double c);
 
 // fdf_dot_oper
 void	dot_add(t_dot *dot, int x, int y, int z);
 void	dot_transform(t_dot *dot, double **matrix);
-void	dot_iofn(t_dot *center, t_dot *dot, int i, int n);
-void	dot_sum(t_dot *a, t_dot *b);
-void	dot_sub(t_dot *a, t_dot *b);
+void	dot_scalar_percent(t_dot *dot, int p);
+void	dot_rotate(t_dot *dot, double a, double b, double c);
 
 // fdf_matrix
 double	**ft_matrix_new(double *row, int m, int n);
@@ -81,11 +74,15 @@ void	fdf_image_set_map(t_img *img, t_dot ***dup);
 
 // FDF_math
 int		ft_larger(int x, int y);
+int		ft_smaller(int x, int y);
 int		ft_abs(int n);
 int		ft_iofn(int a, int b, int i, int n);
 
 // FDF_map
 t_dot	*ft_map_center(t_dot ***map);
+int		get_center_y(t_dot ***map);
+int		get_center_x(t_dot ***map);
+int		get_center_z(t_dot ***map);
 
 // fdf_dot_new
 t_dot	*ft_dotnew(int x, int y, int z, int color);
